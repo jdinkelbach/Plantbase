@@ -16,8 +16,8 @@ $("#submit").on("click", async function(){
 })
 
 function loadCards(){
+    console.log(results);
     for (var i = 0; i < results.length; i++){
-        console.log(i + ": " + results[i].image_url);
         $("#results").append(   '<div class="card my-3" style="width: 12rem;">' +
                                 '<img class="card-img-top" src="' + results[i].image_url + '" alt=""> <div class="card-body"> <h5>'
                                 + results[i].common_name + '</h5></div></div>');
