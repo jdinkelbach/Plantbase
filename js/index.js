@@ -12,23 +12,38 @@ $("#submit").on("click", async function(){
     let json = await response.json();
     results = json.data;
     resetCards();
+    nullImages();
     loadCards();
 })
 
+// Loads cards with plant pictures and information
 function loadCards(){
     console.log(results);
     for (var i = 0; i < results.length; i++){
-        $("#results").append(   '<div class="card my-3" style="width: 12rem;">' +
-                                '<img class="card-img-top" src="' + results[i].image_url + '" alt=""> <div class="card-body"> <h5>'
-                                + results[i].common_name + '</h5></div></div>');
+        $("#results").append(   '<div class="card my-3" style="width: 16rem;">' +
+                                '<img class="card-img-top" src="' + results[i].image_url 
+                                + '" alt=""> <div class="card-body"> <h5 class="card-title">' + results[i].common_name + '</h5><p class="card-text text-left">Family: ' 
+                                + results[i].family + '<br>Scientific name: ' + results[i].scientific_name 
+                                + '</p></div></div>');
     }
 }
 
+// Removes all cards from page
 function resetCards(){
     $("#results").html("");
 }
 
-// When user scrolls execute sticky()
+// Deletes cards with null images
+function nullImages(){
+    for (var i = 0; i < results.length; i++){
+        if(results[i].image_url == null){
+            console.log(results[i]);
+            results.splice(i, 1);
+        }
+    }
+}
+
+// When user scrolls execute navShadow()
 window.onscroll = function() {navShadow()};
 
 // When user scrolls toggle navbar shadow

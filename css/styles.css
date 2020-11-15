@@ -9,7 +9,12 @@ img {
 
 #results{
     width: 60%;
-    margin: 0 auto;
+    margin: 1% auto 0;
+}
+
+h1{
+    color: #73ba9b;
+    font-family: 'Kurale', serif;
 }
 
 .nav-shadow{
@@ -20,6 +25,10 @@ img {
     box-shadow: 0 6px 6px rgba(0,0,0,0.05);
 }
 
+.card-text{
+    color: #383D3B;
+}
+
 #search{
     width: 100%;
     border-radius: 5px;
@@ -28,4 +37,13 @@ img {
 
 #search-bar{
     width: 30%;
+}
+
+#submit{
+    background-color: #73ba9b;
+    color: white;
+}
+
+#submit:hover{
+    background-color: darkgreen;   
 }
