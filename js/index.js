@@ -8,7 +8,8 @@ var results = [];
 
 $("#submit").on("click", async function(){
     let search = $("#search").val();
-    const response = await fetch(proxyUrl + 'https://trefle.io/api/v1/species/search?q=coconut&token=B7fsZ2B9TQi8nW3_4GY2ih2XWGB4bqIk9FXY6P_IF28');
+    console.log(search);
+    const response = await fetch(proxyUrl + `https://trefle.io/api/v1/species/search?q=${search}&token=B7fsZ2B9TQi8nW3_4GY2ih2XWGB4bqIk9FXY6P_IF28`);
     let json = await response.json();
     results = json.data;
     resetCards();
