@@ -39,7 +39,7 @@ function loadCards(){
     for (var i = 0; i < results.length; i++){
         $("#results").append(   '<div class="card my-3" style="width: 16rem;">' +
                                 '<img class="card-img-top" src="' + results[i].image_url 
-                                + '" alt=""> <div class="card-body"> <h5 class="card-title">' + results[i].common_name + '</h5><p class="card-text text-left">Family: ' 
+                                + '" alt=""> <div class="card-body"> <h5 class="card-title">' + getName(i) + '</h5><p class="card-text text-left">Family: ' 
                                 + results[i].family + '<br>Scientific name: ' + results[i].scientific_name 
                                 + '</p></div></div>');
     }
@@ -57,6 +57,16 @@ function nullImages(){
             console.log(results[i]);
             results.splice(i, 1);
         }
+    }
+}
+
+// Returns common name if not null
+function getName(i){
+    if (results[i].common_name != null){
+        return results[i].common_name;
+    }
+    else{
+        return "";
     }
 }
 
