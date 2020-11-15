@@ -1,21 +1,37 @@
 /*global $*/
 /*global fetch*/
 
-// var token =  `B7fsZ2B9TQi8nW3_4GY2ih2XWGB4bqIk9FXY6P_IF28`;
+var token =  `B7fsZ2B9TQi8nW3_4GY2ih2XWGB4bqIk9FXY6P_IF28`;
 var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 var nav = $("#nav");
 var results = [];
 
-$("#submit").on("click", async function(){
+$("#submit").on("click", function(){
+    search();
+    updateResults();
+});
+
+$("#search").on("keyup", function(e) {
+    if (e.keyCode === 13) {
+        search();
+        updateResults();
+    }
+});
+
+// Handles Trefle API requests/responses
+async function search(){
     let search = $("#search").val();
-    console.log(search);
-    const response = await fetch(proxyUrl + `https://trefle.io/api/v1/species/search?q=${search}&token=B7fsZ2B9TQi8nW3_4GY2ih2XWGB4bqIk9FXY6P_IF28`);
+    const response = await fetch(proxyUrl + `https://trefle.io/api/v1/species/search?q=${search}&token=${token}`);
     let json = await response.json();
     results = json.data;
+}
+
+// Updates search results
+function updateResults(){
     resetCards();
     nullImages();
     loadCards();
-})
+}
 
 // Loads cards with plant pictures and information
 function loadCards(){
