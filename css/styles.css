@@ -1,3 +1,8 @@
+html{
+    min-height: 100%;
+    overflow: auto;
+}
+
 header{
     z-index: 1;
     padding-left: 4%;
@@ -48,7 +53,7 @@ h1{
 }
 
 #submit:hover{
-    background-color: darkgreen;   
+    background-color: #4c9a78;   
 }
 
 #search:focus{
@@ -58,8 +63,12 @@ h1{
 
 footer{
     bottom: 0;
-    position: absolute;
+    position: relative;
     width: 100%;
     line-height: 2;
     color: #73ba9b;
+}
+
+#results{
+    min-height: 78vh;
 }
