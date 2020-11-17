@@ -6,13 +6,15 @@ var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 var nav = $("#nav");
 var results = [];
 
-$("#submit").on("click", function(){
+$("#search-bar").on("submit", function(e){
+    e.preventDefault();
     search();
     updateResults();
 });
 
-$("#search").on("keyup", function(e) {
+$("#document").keypress(function(e) {
     if (e.keyCode === 13) {
+        e.preventDefault();
         search();
         updateResults();
     }
@@ -21,10 +23,17 @@ $("#search").on("keyup", function(e) {
 // Handles Trefle API requests/responses
 async function search(){
     let search = $("#search").val();
-    const response = await fetch(proxyUrl + `https://trefle.io/api/v1/species/search?q=${search}&token=${token}`);
-    let json = await response.json();
-    results = json.data;
+    if (isValid(search)){
+        const response = await fetch(proxyUrl + `https://trefle.io/api/v1/species/search?q=${search}&token=${token}`);
+        let json = await response.json();
+        results = json.data;
+    }
 }
+
+// Remove placeholder when clicking on search bar
+$("#search").on("click", function(){
+    $("#search").attr("placeholder", "");
+})
 
 // Updates search results
 function updateResults(){
@@ -82,5 +91,15 @@ function navShadow() {
     // At top of page
     else{
         nav.removeClass("nav-shadow");
+    }
+}
+
+// Checks search input is valid
+function isValid(search){
+    if(search == 0){
+        $("#search").attr("placeholder", "Search field cannot be empty");
+    }
+    else{
+        return true;
     }
 }
