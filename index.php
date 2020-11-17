@@ -20,7 +20,7 @@
             </form>
         </header>
         <div id=results class="d-flex flex-wrap justify-content-between"></div>
-        <footer>
+        <footer class="mt-2">
             &copy; Justin Dinkelbach - 2020<br>
         </footer>
         <!--JS-->
