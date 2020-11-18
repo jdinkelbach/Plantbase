@@ -17,6 +17,7 @@ img {
 #results{
     width: 60%;
     margin: 1% auto 0;
+    min-height: 78vh;
 }
 
 h1{
@@ -67,8 +68,4 @@ footer{
     width: 100%;
     line-height: 2;
     color: #73ba9b;
-}
-
-#results{
-    min-height: 78vh;
 }
